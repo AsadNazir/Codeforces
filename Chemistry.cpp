@@ -53,7 +53,7 @@ bool canFormPalindrome(string s, int k)
     }
 
     // Step 3: Check if it's possible to form a palindrome
-    if (oddFreqCount > k)
+    if (oddFreqCount > k+1)
     {
         return false;
     }
@@ -76,18 +76,18 @@ void sol()
         return;
     }
 
-    if(k==0)
-    {
-        if(palindrome(s))
-        {
-            cout << "YES" << endl;
-        }
-        else
-        {
-            cout << "NO" << endl;
-        }
-        return;
-    }
+    // if(k==0)
+    // {
+    //     if(palindrome(s))
+    //     {
+    //         cout << "YES" << endl;
+    //     }
+    //     else
+    //     {
+    //         cout << "NO" << endl;
+    //     }
+    //     return;
+    // }
 
     if (canFormPalindrome(s, k))
     {
