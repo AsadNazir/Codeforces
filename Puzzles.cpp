@@ -12,6 +12,7 @@
 #include <climits>
 #include <unordered_set>
 #include <stack>
+
 #define fastio                        \
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);                    \
@@ -21,48 +22,39 @@ using namespace std;
 
 void sol()
 {
-    int n;
-    cin >> n;
-
-    vector<long long> a(n);
-
+    int n, m;
+    cin >> m >> n;
+    vector<int> v(n);
     for (int i = 0; i < n; i++)
-        cin >> a[i];
+        cin >> v[i];
 
-    long long curr = 0;
-    long long ans = 0;
+    sort(v.begin(), v.end());
 
-    for (int i = 1; i < n; i++)
+    int best = INT_MAX;
+
+    for (auto x : v)
+        cout << x << " ";
+    cout << endl;
+    for (int i = 0; i <= n - m; i++)
     {
-        long long ele = a[i];
-        while (curr > 0 && a[i - 1] * 2 <= ele)
-        {
-            curr--;
-            ele /= 2;
-        }
+        cout << v[i + m - 1] << " " << v[i] << endl;
 
-        while (ele < a[i - 1])
-        {
-            ele *= 2;
-            curr++;
-        }
-
-        ans += curr;
+        best = min(best, v[i + m - 1] - v[i]);
     }
 
-    cout << ans << endl;
-
+    cout << best << endl;
     return;
 }
 
 int main()
 {
-    fastio;
-    int t;
-    cin >> t;
 
-    while (t--)
-        sol();
+    fastio;
+    // int t;
+    // cin >> t;
+
+    // while (t--)
+    sol();
 
     return 0;
 }
