@@ -50,18 +50,112 @@ const lli mod = 1e9 + 7;
 
 int distintVal()
 {
-    long long n;
+
+    int n;
     cin >> n;
-    unordered_map<long long, long long> s;
+    vector<long long> v(n);
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> v[i];
+    }
+
+    sort(v.begin(), v.end());
+
+    int size = 1;
+
+    if (v.size() == 0)
+    {
+        return 0;
+    }
+    else if (v.size() == 1)
+        return 1;
+
+    for (int i = 1; i < v.size(); i++)
+    {
+        if (v[i] != v[i - 1])
+        {
+            size++;
+        }
+    }
+
+    return size;
+}
+
+int FerrisWheel()
+{
+    long long n, x;
+    cin >> n >> x;
+
+    vector<long long> v(n);
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> v[i];
+    }
+
+    sort(v.begin(), v.end());
+
+    int i = 0, j = n - 1;
+
+    int ans = 0;
+
+    while (i <= j)
+    {
+        if (v[i] + v[j] <= x)
+        {
+            i++;
+            j--;
+        }
+        else
+        {
+            j--;
+        }
+        ans++;
+    }
+
+    return ans;
+}
+
+void conecertTickets()
+{
+    int n, h;
+
+    cin >> n >> h;
+
+    multiset<long long> v;
+    vector<long long> ans(n);
+    vector<long long> tick(h);
 
     for (int i = 0; i < n; i++)
     {
         long long x;
         cin >> x;
-        s[x]++;
+        v.insert(x);
     }
 
-    return s.size();
+    for (int i = 0; i < h; i++)
+        cin >> tick[i];
+
+    // sort(v.begin(), v.end());
+
+    for (int i = 0; i < h; i++)
+    {
+        auto it= v.upper_bound(tick[i]);
+
+        if (it == v.begin())
+        {
+            cout << -1 << endl;
+        }
+        else
+        {
+            it--;
+            cout << *it << endl;
+            v.erase(it);
+        }
+    }
+
+    return;
 }
 
 int main()
@@ -80,6 +174,7 @@ int main()
 
     // cout << move(0, 0, v, n, dp);
 
-    cout << distintVal();
+    // cout << distintVal();
+    conecertTickets();
     return 0;
 }
