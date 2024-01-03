@@ -1,6 +1,10 @@
-bac.dba
-bab
-dad.eca.edd.d
-da
-dac.ac
-dab.bba.aba.bab.aba.ba
+1
+2
+3
+6
+4
+22
+3
+1
+2
+2
