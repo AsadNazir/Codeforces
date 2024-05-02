@@ -14,7 +14,11 @@
 #include <list>
 #include <cassert>
 #include <climits>
+<<<<<<< HEAD
+
+=======
 #include <stdio.h>
+>>>>>>> 6af45dd9e78937eed29f25825a5450569182e8ce
 using namespace std;
 
 #define ll long long
