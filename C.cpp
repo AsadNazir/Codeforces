@@ -71,12 +71,115 @@ void sol()
     return;
 }
 
+void sol2()
+{
+    int n, m;
+
+    cin >> n >> m;
+
+    bool isForward = true;
+
+    int pass = m;
+
+    // if(n<m)
+    // {
+    //     cout<<m<<"->"<<m+1<<endl;
+    // }
+
+    int prev = 0;
+    int next = 1;
+    while (pass)
+    {
+        if (isForward)
+        {
+            if (next == n)
+            {
+                isForward = false;
+                continue;
+            }
+            prev = next;
+            next++;
+            pass--;
+        }
+        else
+        {
+            if (next == 1)
+            {
+                isForward = true;
+                continue;
+            }
+
+            prev = next;
+            next--;
+            pass--;
+        }
+    }
+
+    cout << prev << "->" << next << endl;
+}
+
+void sol4()
+{
+    int n, m;
+    cin>>n>>m;
+
+    int cycles = 2*(n-1);
+    int total = m/cycles;
+    int rem = m%cycles;
+
+    cout<<total<<endl;
+    cout<<rem<<endl;
+}
+
+void sol3()
+{
+    int n, m;
+    cin >> n >> m;
+
+    bool isFor;
+
+    if (m < n)
+    {
+        cout << m << "->" << m + 1 << endl;
+        return;
+    }
+
+    if ((m / (n - 1)) % 2 == 0)
+    {
+        isFor = true;
+    }
+    else
+        isFor = false;
+
+    int rem = m % (n - 1);
+
+    if (isFor)
+    {
+        cout << "its a forward" << endl;
+        if (rem == 0)
+            cout << n - 1 << "->" << n << endl;
+        else if (rem == 1)
+            cout << 1 << "->" << 2 << endl;
+        else
+            cout << rem << "->" << rem + 1 << endl;
+    }
+    else
+    {
+        cout << "its a backward" << endl;
+        if (rem == 0)
+            cout << 2 << "->" << 1 << endl;
+        else if (rem == 1)
+            cout << n << "->" << n - 1 << endl;
+        else
+            cout << n - rem + 1 << "->" << n - rem << endl;
+    }
+}
 int main()
 {
     fast_io;
     int t;
     cin >> t;
     while (t--)
-        sol();
+    sol4();
     return 0;
 }
